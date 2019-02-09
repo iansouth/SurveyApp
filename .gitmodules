@@ -1,0 +1,75 @@
+[submodule "openFrameworks"]
+	path = openFrameworks
+	url = https://github.com/openframeworks/openFrameworks.git
+[submodule "ExternalAddons/ofxFontStash"]
+	path = ExternalAddons/ofxFontStash
+	url = https://github.com/local-projects/ofxFontStash.git
+[submodule "ExternalAddons/ofxFontStash2"]
+	path = ExternalAddons/ofxFontStash2
+	url = https://github.com/local-projects/ofxFontStash2.git
+[submodule "ExternalAddons/ofxTuio"]
+	path = ExternalAddons/ofxTuio
+	url = https://github.com/local-projects/ofxTuio.git
+[submodule "ExternalAddons/ofxJSON"]
+	path = ExternalAddons/ofxJSON
+	url = https://github.com/local-projects/ofxJSON.git
+[submodule "ExternalAddons/ofxSuperLog"]
+	path = ExternalAddons/ofxSuperLog
+	url = https://github.com/local-projects/ofxSuperLog.git
+[submodule "ExternalAddons/ofxAutoTexture"]
+	path = ExternalAddons/ofxAutoTexture
+	url = https://github.com/local-projects/ofxAutoTexture.git
+[submodule "ExternalAddons/ofxMTJsonParser"]
+	path = ExternalAddons/ofxMTJsonParser
+	url = https://github.com/local-projects/ofxMTJsonParser.git
+[submodule "ExternalAddons/ofxSimpleHttp"]
+	path = ExternalAddons/ofxSimpleHttp
+	url = https://github.com/local-projects/ofxSimpleHttp.git
+[submodule "ExternalAddons/ofxTagSystem"]
+	path = ExternalAddons/ofxTagSystem
+	url = https://github.com/local-projects/ofxTagSystem.git
+[submodule "ExternalAddons/ofxStateMachine"]
+	path = ExternalAddons/ofxStateMachine
+	url = https://github.com/local-projects/ofxStateMachine.git
+[submodule "ExternalAddons/ofxAssets"]
+	path = ExternalAddons/ofxAssets
+	url = https://github.com/local-projects/ofxAssets.git
+[submodule "ExternalAddons/ofxThreadSafeLog"]
+	path = ExternalAddons/ofxThreadSafeLog
+	url = https://github.com/local-projects/ofxThreadSafeLog.git
+[submodule "ExternalAddons/ofxProgressiveTextureLoad"]
+	path = ExternalAddons/ofxProgressiveTextureLoad
+	url = https://github.com/local-projects/ofxProgressiveTextureLoad.git
+[submodule "ExternalAddons/ofxTexturedObject"]
+	path = ExternalAddons/ofxTexturedObject
+	url = https://github.com/local-projects/ofxTexturedObject.git
+[submodule "ExternalAddons/ofxMullion"]
+	path = ExternalAddons/ofxMullion
+	url = https://github.com/local-projects/ofxMullion.git
+[submodule "ExternalAddons/ofxSensu"]
+	path = ExternalAddons/ofxSensu
+	url = https://github.com/local-projects/ofxSensu.git
+[submodule "ExternalAddons/ofxGoogleAnalytics"]
+	path = ExternalAddons/ofxGoogleAnalytics
+	url = https://github.com/local-projects/ofxGoogleAnalytics.git
+[submodule "ExternalAddons/ofxJsonSettings"]
+	path = ExternalAddons/ofxJsonSettings
+	url = https://github.com/local-projects/ofxJsonSettings.git
+[submodule "ExternalAddons/ofxTimeMeasurements"]
+	path = ExternalAddons/ofxTimeMeasurements
+	url = https://github.com/local-projects/ofxTimeMeasurements.git
+[submodule "ExternalAddons/ofxRemoteUI"]
+	path = ExternalAddons/ofxRemoteUI
+	url = https://github.com/local-projects/ofxRemoteUI.git
+[submodule "ExternalAddons/ofxHistoryPlot"]
+	path = ExternalAddons/ofxHistoryPlot
+	url = https://github.com/local-projects/ofxHistoryPlot.git
+[submodule "ExternalAddons/ofxScreenSetup"]
+	path = ExternalAddons/ofxScreenSetup
+	url = https://github.com/local-projects/ofxScreenSetup.git
+[submodule "ExternalAddons/ofxInterface"]
+	path = ExternalAddons/ofxInterface
+	url = https://github.com/local-projects/ofxInterface.git
+[submodule "ExternalAddons/ofxApp"]
+	path = ExternalAddons/ofxApp
+	url = https://github.com/local-projects/ofxApp.git

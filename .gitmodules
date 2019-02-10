@@ -73,3 +73,6 @@
 [submodule "ExternalAddons/ofxApp"]
 	path = ExternalAddons/ofxApp
 	url = https://github.com/local-projects/ofxApp.git
+[submodule "ExternalAddons/ofxAnimatable"]
+	path = ExternalAddons/ofxAnimatable
+	url = https://github.com/local-projects/ofxAnimatable.git

@@ -301,6 +301,9 @@
     <ClCompile Include="..\..\ExternalAddons\ofxGoogleAnalytics\src\ofxGoogleAnalytics.cpp">
       <Filter>local_addons\ofxGoogleAnalytics\src</Filter>
     </ClCompile>
+    <ClCompile Include="src\CameraCapture.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2115,6 +2118,9 @@
       <Filter>local_addons\ofxGoogleAnalytics\src</Filter>
     </ClInclude>
     <ClInclude Include="src\SurveyAppGlobals.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\CameraCapture.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

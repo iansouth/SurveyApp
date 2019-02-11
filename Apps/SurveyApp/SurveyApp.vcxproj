@@ -188,6 +188,7 @@
     <PostBuildEvent />
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\CameraCapture.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\openFrameworks\addons\ofxNetwork\src\ofxNetworkUtils.cpp" />
@@ -288,6 +289,7 @@
     <ClCompile Include="..\..\ExternalAddons\ofxGoogleAnalytics\src\ofxGoogleAnalytics.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\CameraCapture.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\openFrameworks\addons\ofxNetwork\src\ofxNetwork.h" />
     <ClInclude Include="..\..\openFrameworks\addons\ofxNetwork\src\ofxNetworkUtils.h" />

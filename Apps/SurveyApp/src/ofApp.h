@@ -2,6 +2,8 @@
 
 #include "ofMain.h"
 #include <ofxApp.h>
+#include "CameraCapture.h"
+#include <list>
 
 class ofApp : public ofBaseApp, public ofxAppDelegate {
 
@@ -25,4 +27,8 @@ class ofApp : public ofBaseApp, public ofxAppDelegate {
 		// Inherited via ofxAppDelegate
 		virtual void ofxAppPhaseWillBegin(ofxApp::Phase) override;
 		virtual void ofxAppContentIsReady(const std::string & contentID, vector<ContentObject*>) override;
+
+	private:
+		CameraCapture capture;
+		std::list<CaptureImage*> images;
 };

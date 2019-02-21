@@ -2,18 +2,23 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    capture.init();
+    capture.setup();
+    answerPanel.setup();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     ofBackground(0, 0, 0);
     capture.update();
+    answerPanel.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofSetHexColor(0xffffff);
+    answerPanel.setCameraTexture(capture.getPreviewTexture());
+    answerPanel.draw(700, 0, ofGetWidth()-700, ofGetHeight());
+
     double timeFade = 1.0;
     while(!images.empty() && images.front()->getCaptureAgeSeconds() > timeFade)
     {
@@ -49,17 +54,17 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-
+    answerPanel.mouseDragged(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-
+    answerPanel.mousePressed(x, y);
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-
+    answerPanel.mouseReleased(x, y);
 }
 
 //--------------------------------------------------------------

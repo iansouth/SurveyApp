@@ -1,5 +1,6 @@
 #pragma once
 
-class SurveyAppGlobals {
+#include <ofxAppGlobalsBasic.h>
 
+class SurveyAppGlobals : public ofxAppGlobalsBasic {
 };

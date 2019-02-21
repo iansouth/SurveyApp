@@ -304,6 +304,9 @@
     <ClCompile Include="src\CameraCapture.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\AnswerGui.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2121,6 +2124,15 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\CameraCapture.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\AnswerGui.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SurveyAnswers.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SurveyQuestions.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

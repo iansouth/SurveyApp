@@ -23,7 +23,6 @@ private:
 
     ofTexture* texture = nullptr;
     ofShader filterShader;
-    ofxFontStash2::Fonts fonts;
 
     float imgX = 0.0;
     float imgY = 0.0;

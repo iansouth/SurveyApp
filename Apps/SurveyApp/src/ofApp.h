@@ -4,6 +4,8 @@
 #include <ofxApp.h>
 #include "AnswerGui.h"
 #include "CameraCapture.h"
+#include "SurveyQuestions.h"
+#include "ResponseGui.h"
 #include <list>
 
 class ofApp : public ofBaseApp, public ofxAppDelegate {
@@ -29,8 +31,11 @@ class ofApp : public ofBaseApp, public ofxAppDelegate {
         virtual void ofxAppPhaseWillBegin(ofxApp::Phase) override;
         virtual void ofxAppContentIsReady(const std::string & contentID, vector<ContentObject*>) override;
 
-    private:
+        static ofxFontStash2::Fonts fonts;
+
+private:
         CameraCapture capture;
         std::list<CaptureImage*> images;
         AnswerGui answerPanel;
+        ResponseGui responsePanel;
 };

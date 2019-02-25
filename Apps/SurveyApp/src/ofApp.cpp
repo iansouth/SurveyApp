@@ -1,9 +1,28 @@
 #include "ofApp.h"
 
+ofxFontStash2::Fonts ofApp::fonts;
+
 //--------------------------------------------------------------
 void ofApp::setup(){
+    fonts = ofxFontStash2::Fonts();
+    fonts.setup();
+    fonts.addFont("VeraMono", "fonts/VeraMono-Bold.ttf");
+
+    //define font styles
+    ofxFontStash2::Style answer("VeraMono", 40, ofColor::black);
+    answer.alignmentV = NVGalign::NVG_ALIGN_MIDDLE;
+
+    ofxFontStash2::Style response("VeraMono", 40, ofColor::white);
+    response.alignmentV = NVGalign::NVG_ALIGN_TOP;
+
+    fonts.addStyle("answer", answer);
+    fonts.addStyle("response", response);
+    fonts.pixelDensity = 2.0;
+
     capture.setup();
     answerPanel.setup();
+    responsePanel.setup();
+
 }
 
 //--------------------------------------------------------------
@@ -11,21 +30,21 @@ void ofApp::update(){
     ofBackground(0, 0, 0);
     capture.update();
     answerPanel.update();
+    responsePanel.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     ofSetHexColor(0xffffff);
     answerPanel.setCameraTexture(capture.getPreviewTexture());
+    responsePanel.draw(0, 0, 700, ofGetHeight());
     answerPanel.draw(700, 0, ofGetWidth()-700, ofGetHeight());
-
     double timeFade = 1.0;
     while(!images.empty() && images.front()->getCaptureAgeSeconds() > timeFade)
     {
         delete images.front();
         images.pop_front();
     }
-
     ofEnableAlphaBlending();
     for(auto img : images) 
     {

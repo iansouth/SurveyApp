@@ -307,6 +307,9 @@
     <ClCompile Include="src\AnswerGui.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\ResponseGui.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="src">
@@ -2133,6 +2136,9 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\SurveyQuestions.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ResponseGui.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

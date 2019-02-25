@@ -1,5 +1,7 @@
 #include "AnswerGui.h"
+#include "ofxApp.h"
 #include <algorithm>
+#include "ofApp.h"
 
 void AnswerGui::setCameraTexture(ofTexture * tex) 
 {
@@ -8,15 +10,6 @@ void AnswerGui::setCameraTexture(ofTexture * tex)
 
 void AnswerGui::setup()
 {
-    fonts.setup(false);
-    //add fonts to the stash
-    fonts.addFont("VeraMono", "fonts/VeraMono-Bold.ttf");
-
-    //define font styles
-    ofxFontStash2::Style bold("VeraMono", 40, ofColor::black);
-    bold.alignmentV = NVGalign::NVG_ALIGN_MIDDLE;
-    fonts.addStyle("text", bold);
-    fonts.pixelDensity = 2.0;
 }
 
 void AnswerGui::update()
@@ -25,22 +18,21 @@ void AnswerGui::update()
 
 void AnswerGui::draw(float x, float y, float width, float height)
 {
-    static const string yesText = "<text>YES</text>";
-    static const string noText = "<text>NO</text>";
+    static const string yesText = "<answer>YES</answer>";
+    static const string noText = "<answer>NO</answer>";
     ofSetColor(ofColor::wheat);
     ofFill();
     ofDrawRectangle(x, y, width, height);
     ofSetColor(ofColor::black);
     float offset = 100;
     imgWidth = imgHeight = std::min(width  /1.5, height / 4.0);
-    fonts.drawFormattedColumn(yesText, x, y+imgHeight/2, width, OF_ALIGN_HORZ_CENTER, false);
-    fonts.drawFormattedColumn(noText, x, y+height-imgHeight/2, width, OF_ALIGN_HORZ_CENTER, false);
+    ofApp::fonts.drawFormattedColumn(yesText, x, y + imgHeight / 2, width, OF_ALIGN_HORZ_CENTER, false);
+    ofApp::fonts.drawFormattedColumn(noText, x, y+height-imgHeight/2, width, OF_ALIGN_HORZ_CENTER, false);
     ofSetColor(ofColor::black);
     ofNoFill();
     ofSetLineWidth(3.0f);
     ofDrawRectangle(x, y, width, imgHeight*1.1);
     ofDrawRectangle(x, y + height - imgHeight*1.1, width, imgHeight*1.1);
-
     // clamp image to boundary
     if (dragX < 0)
         imgX = x + width / 2 - imgWidth/2;

@@ -1,5 +1,7 @@
 
 #pragma once
+
+#include "ofMain.h"
 #include <string>
 #include <vector>
 
@@ -8,26 +10,38 @@ struct ResponseResult {
     int change;
 };
 
+using Change = std::vector<ResponseResult>;
+
 struct Question {
     std::string text;
-    std::vector<ResponseResult> resultYes;
-    std::vector<ResponseResult> resultNo;
+    Change resultYes;
+    Change resultNo;
 };
 
-static std::vector<Question> qs = {
+class QuestionDisplay 
 {
-    "When?", 
-    { { "Industry", 5 }, {"Science", -2}, {"Art", -1}, {"Education", 1} }, // yes 
-    { { "Industry", 3 },{ "Science", 2 },{ "Art", 3 },{ "Education",-3 }}  // no 
-},
-{
-    "Why?",
-    { { "Industry", -5 },{ "Science", 3 },{ "Art", 1 },{ "Education",-3 } }, // yes 
-    { { "Industry", 1 },{ "Science", -1 },{ "Art", 3 },{ "Education", 3 } }  // no 
-},
-{
-    "Hows?",
-    { { "Industry", 2 },{ "Science", -2 },{ "Art", 1 },{ "Education",-3 } }, // yes 
-    { { "Industry", 5 },{ "Science", 2 },{ "Art", 0 },{ "Education",2 } }  // no 
-}
+public:
+    QuestionDisplay() {
+        iter = qs.begin();
+    }
+
+    ofEvent< Change > onResponseChange;
+
+    void draw(int x, int y, int width, int height);
+    void next();
+
+private:
+#define SIMPLE_Q(X) { #X "?", {{#X, 1}}, {{#X, -1}}}
+    std::vector<Question> qs = {
+        {
+            "Hmm?",
+            { { "Science",  5 },{ "Technology",  5 },{ "Engineering",  5 },{ "Art",  5 },{ "Mathematics",  5 } }, // yes
+            { { "Science", -5 },{ "Technology", -5 },{ "Engineering", -5 },{ "Art", -5 },{ "Mathematics", -5 } }  // no
+        },
+        SIMPLE_Q(Science), SIMPLE_Q(Technology), SIMPLE_Q(Engineering), SIMPLE_Q(Art), SIMPLE_Q(Mathematics)
+    };
+
+    std::vector<Question>::iterator iter;
+public:
+    void answered(bool yes);
 };

@@ -2,31 +2,10 @@
 
 #include "ofMain.h"
 
-class CaptureImage
-{
-public:
-    CaptureImage(const ofPixels& pixels, ofTime time);
-    ~CaptureImage() {}
-
-    void draw(int x, int y, int width, int height);
-    double getCaptureAgeSeconds();
-private:
-    ofTexture texture;
-    ofTime captureTime;
-    static ofShader filterShader;
-};
-
 class CameraCapture
 {
 public:
-    CameraCapture(int width=640, int height=480);
+    CameraCapture(ofTexture&);
     ~CameraCapture();
-
-    void setup();
-    void update();
-    CaptureImage* captureImage();
-    ofTexture* getPreviewTexture();
 private:
-    ofVideoGrabber vidGrabber;
-    int camWidth, camHeight;
 };

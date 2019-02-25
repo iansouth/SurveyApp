@@ -1,12 +1,12 @@
 #include "ofApp.h"
-
-ofxFontStash2::Fonts ofApp::fonts;
+#include <functional>
+#include "Text.h"
+#include "ThreadedTextureSaver.h"
 
 //--------------------------------------------------------------
-void ofApp::setup(){
-    fonts = ofxFontStash2::Fonts();
-    fonts.setup();
-    fonts.addFont("VeraMono", "fonts/VeraMono-Bold.ttf");
+void ofApp::setup() {
+    Text::get().setup();
+    Text::get().addFont("VeraMono", "fonts/VeraMono-Bold.ttf");
 
     //define font styles
     ofxFontStash2::Style answer("VeraMono", 40, ofColor::black);
@@ -15,50 +15,78 @@ void ofApp::setup(){
     ofxFontStash2::Style response("VeraMono", 40, ofColor::white);
     response.alignmentV = NVGalign::NVG_ALIGN_TOP;
 
-    fonts.addStyle("answer", answer);
-    fonts.addStyle("response", response);
-    fonts.pixelDensity = 2.0;
+    ofxFontStash2::Style question("VeraMono", 55, ofColor::white);
+    question.alignmentV = NVGalign::NVG_ALIGN_MIDDLE;
 
-    capture.setup();
+
+    Text::get().addStyle("answer", answer);
+    Text::get().addStyle("response", response);
+    Text::get().addStyle("question", question);
+    Text::get().pixelDensity = 2.0;
+
     answerPanel.setup();
     responsePanel.setup();
+    responseFbo.allocate(1920, 1080, GL_RGB, 4);
+    blurShader.load("blur");
 
+    ofAddListener(answerPanel.onAnswer, this, &ofApp::onAnswer);
+    ofAddListener(questionDisplay.onResponseChange, &responsePanel, &ResponseGui::onUpdate);
+
+    changeState(SHOW_QUESTION);
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     ofBackground(0, 0, 0);
-    capture.update();
     answerPanel.update();
     responsePanel.update();
+    if (state == SHOW_CAMERA && stateTime() > 5)
+    {
+        questionDisplay.next();
+        changeState(SHOW_RESPONSES);
+        answerPanel.enable();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    float divide = 0.7*ofGetWidth();
     ofSetHexColor(0xffffff);
-    answerPanel.setCameraTexture(capture.getPreviewTexture());
-    responsePanel.draw(0, 0, 700, ofGetHeight());
-    answerPanel.draw(700, 0, ofGetWidth()-700, ofGetHeight());
-    double timeFade = 1.0;
-    while(!images.empty() && images.front()->getCaptureAgeSeconds() > timeFade)
+
+    if (state == SHOW_QUESTION)
     {
-        delete images.front();
-        images.pop_front();
+        responseFbo.begin();
+        ofClear(0);
     }
-    ofEnableAlphaBlending();
-    for(auto img : images) 
+    responsePanel.draw(0, 0, divide, ofGetHeight());
+    if (state == SHOW_QUESTION)
     {
-        float alpha = 1.0 - img->getCaptureAgeSeconds()/timeFade;
-        ofSetColor(255,255,255,alpha*255);
-        img->draw(0,0,1280,720);
+        responseFbo.end();
+        blurShader.begin();
+        responseFbo.getTexture().draw(0, 0);
+        blurShader.end();
+        questionDisplay.draw(0, 0, divide, ofGetHeight());
     }
-    ofDisableAlphaBlending();
+
+    answerPanel.draw(divide, 0, ofGetWidth()-divide, ofGetHeight());
+
+    if (state == SHOW_CAMERA)
+    {
+        // draw camera
+        camera.setAnchorPercent(0.5, 0.5);
+        camera.draw(ofGetWidth()/2, ofGetHeight()/2);
+    }
+}
+
+void ofApp::exit()
+{
+    for (auto& thread : threads) {
+        thread.waitForThread();
+    }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    if(key == ' ')
-        images.push_back(capture.captureImage());
 }
 
 //--------------------------------------------------------------
@@ -79,6 +107,12 @@ void ofApp::mouseDragged(int x, int y, int button){
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
     answerPanel.mousePressed(x, y);
+    if (state == SHOW_RESPONSES && stateTime() > 0.5)
+    {
+        questionDisplay.next();
+        changeState(SHOW_QUESTION);
+        answerPanel.enable();
+    }
 }
 
 //--------------------------------------------------------------
@@ -104,6 +138,17 @@ void ofApp::windowResized(int w, int h){
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
 
+}
+
+void ofApp::onAnswer(bool& yes)
+{
+    camera = answerPanel.getCameraCopy();
+    threads.emplace_back(camera);
+    threads.back().startThread();
+
+    questionDisplay.answered(yes);
+    answerPanel.disable();
+    changeState(SHOW_CAMERA);
 }
 
 void ofApp::ofxAppPhaseWillBegin(ofxApp::Phase)

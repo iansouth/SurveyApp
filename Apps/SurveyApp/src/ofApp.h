@@ -7,6 +7,7 @@
 #include "SurveyQuestions.h"
 #include "ResponseGui.h"
 #include <list>
+#include "ThreadedTextureSaver.h"
 
 class ofApp : public ofBaseApp, public ofxAppDelegate {
 
@@ -14,6 +15,7 @@ class ofApp : public ofBaseApp, public ofxAppDelegate {
         void setup();
         void update();
         void draw();
+        void exit();
 
         void keyPressed(int key);
         void keyReleased(int key);
@@ -26,16 +28,31 @@ class ofApp : public ofBaseApp, public ofxAppDelegate {
         void windowResized(int w, int h);
         void dragEvent(ofDragInfo dragInfo);
         void gotMessage(ofMessage msg);
-        
+        void onAnswer(bool& yes);
         // Inherited via ofxAppDelegate
         virtual void ofxAppPhaseWillBegin(ofxApp::Phase) override;
         virtual void ofxAppContentIsReady(const std::string & contentID, vector<ContentObject*>) override;
 
-        static ofxFontStash2::Fonts fonts;
-
 private:
-        CameraCapture capture;
-        std::list<CaptureImage*> images;
         AnswerGui answerPanel;
         ResponseGui responsePanel;
+        QuestionDisplay questionDisplay;
+        ofFbo responseFbo;
+        ofShader blurShader;
+        ofTexture camera;
+        std::list<ThreadedTextureSaver> threads;
+
+        enum State {
+            START, SHOW_QUESTION, SHOW_CAMERA, SHOW_RESPONSES
+        };
+
+        void changeState(State s) {
+            state = s;
+            stateChangeTime = ofGetCurrentTime();
+        }
+        float stateTime() {
+            return ofGetCurrentTime().getAsSeconds() - stateChangeTime.getAsSeconds();
+        }
+        State state = START;
+        ofTime stateChangeTime = ofGetCurrentTime();
 };

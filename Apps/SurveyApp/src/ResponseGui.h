@@ -6,6 +6,7 @@
 #include <map>
 #include <vector>
 #include <algorithm>
+#include "SurveyQuestions.h"
 
 class ResponseGui {
 public:
@@ -19,10 +20,7 @@ public:
 
     void draw(float x, float y, float width, float height);
 
-    //void mouseDragged(int x, int y);
-    //void mousePressed(int x, int y);
-    //void mouseReleased(int x, int y);    
-
+    void onUpdate(Change& change);
 private:
     std::map<std::string, int> scores =
         {
@@ -32,5 +30,14 @@ private:
             { "Art", 10 },
             { "Mathematics", 1 }
         };
+
+    std::vector< std::string > order =
+    {
+        "Science",
+        "Technology",
+        "Engineering",
+        "Art",
+        "Mathematics",
+    };
 
 };

@@ -289,6 +289,7 @@
     <ClCompile Include="..\..\ExternalAddons\ofxGoogleAnalytics\src\GA_uriencode.cpp" />
     <ClCompile Include="..\..\ExternalAddons\ofxGoogleAnalytics\src\ofxGoogleAnalytics.cpp" />
     <ClCompile Include="src\ResponseGui.cpp" />
+    <ClCompile Include="src\SurveyQuestions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AnswerGui.h" />
@@ -766,6 +767,8 @@
     <ClInclude Include="src\SurveyAnswers.h" />
     <ClInclude Include="src\SurveyAppGlobals.h" />
     <ClInclude Include="src\SurveyQuestions.h" />
+    <ClInclude Include="src\Text.h" />
+    <ClInclude Include="src\ThreadedTextureSaver.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="$(OF_ROOT)\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">

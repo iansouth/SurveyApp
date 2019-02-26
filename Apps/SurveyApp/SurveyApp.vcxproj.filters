@@ -301,16 +301,16 @@
     <ClCompile Include="..\..\ExternalAddons\ofxGoogleAnalytics\src\ofxGoogleAnalytics.cpp">
       <Filter>local_addons\ofxGoogleAnalytics\src</Filter>
     </ClCompile>
-    <ClCompile Include="src\CameraCapture.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="src\AnswerGui.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\ResponseGui.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\SurveyQuestions.cpp">
+    <ClCompile Include="src\QuestionDisplay.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DataModel.cpp">
       <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2129,16 +2129,10 @@
     <ClInclude Include="src\SurveyAppGlobals.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\CameraCapture.h">
-      <Filter>src</Filter>
-    </ClInclude>
     <ClInclude Include="src\AnswerGui.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\SurveyAnswers.h">
-      <Filter>src</Filter>
-    </ClInclude>
-    <ClInclude Include="src\SurveyQuestions.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ResponseGui.h">
@@ -2148,6 +2142,12 @@
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\ThreadedTextureSaver.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\QuestionDisplay.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DataModel.h">
       <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>

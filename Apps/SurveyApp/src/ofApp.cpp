@@ -2,6 +2,8 @@
 #include <functional>
 #include "Text.h"
 #include "ThreadedTextureSaver.h"
+#include "ofxJsonSettings.h"
+#include "DataModel.h"
 
 //--------------------------------------------------------------
 void ofApp::setup() {
@@ -24,6 +26,8 @@ void ofApp::setup() {
     Text::get().addStyle("question", question);
     Text::get().pixelDensity = 2.0;
 
+    //Settings::load()
+
     answerPanel.setup();
     responsePanel.setup();
     responseFbo.allocate(1920, 1080, GL_RGB, 4);
@@ -31,7 +35,7 @@ void ofApp::setup() {
     textureSaver.startThread();
 
     ofAddListener(answerPanel.onAnswer, this, &ofApp::onAnswer);
-    ofAddListener(questionDisplay.onResponseChange, &responsePanel, &ResponseGui::onUpdate);
+    //ofAddListener(questionDisplay.onResponseChange, &responsePanel, &ResponseGui::onUpdate);
 
     changeState(SHOW_QUESTION);
 }
@@ -43,7 +47,6 @@ void ofApp::update(){
     responsePanel.update();
     if (state == SHOW_CAMERA && stateTime() > 5)
     {
-        questionDisplay.next();
         changeState(SHOW_RESPONSES);
         answerPanel.enable();
     }
@@ -109,7 +112,6 @@ void ofApp::mouseDragged(int x, int y, int button){
 void ofApp::mousePressed(int x, int y, int button){
     if (state == SHOW_RESPONSES && stateTime() > 0.5)
     {
-        questionDisplay.next();
         changeState(SHOW_QUESTION);
         answerPanel.enable();
     }
@@ -146,7 +148,7 @@ void ofApp::onAnswer(bool& yes)
     camera = answerPanel.getCameraCopy();
     textureSaver.saveTexture(camera);
 
-    questionDisplay.answered(yes);
+    DataModel::get().respond(yes);
     answerPanel.disable();
     changeState(SHOW_CAMERA);
 }

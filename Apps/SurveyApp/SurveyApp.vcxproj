@@ -189,7 +189,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\AnswerGui.cpp" />
-    <ClCompile Include="src\CameraCapture.cpp" />
+    <ClCompile Include="src\DataModel.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\openFrameworks\addons\ofxNetwork\src\ofxNetworkUtils.cpp" />
@@ -289,11 +289,11 @@
     <ClCompile Include="..\..\ExternalAddons\ofxGoogleAnalytics\src\GA_uriencode.cpp" />
     <ClCompile Include="..\..\ExternalAddons\ofxGoogleAnalytics\src\ofxGoogleAnalytics.cpp" />
     <ClCompile Include="src\ResponseGui.cpp" />
-    <ClCompile Include="src\SurveyQuestions.cpp" />
+    <ClCompile Include="src\QuestionDisplay.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\AnswerGui.h" />
-    <ClInclude Include="src\CameraCapture.h" />
+    <ClInclude Include="src\DataModel.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\openFrameworks\addons\ofxNetwork\src\ofxNetwork.h" />
     <ClInclude Include="..\..\openFrameworks\addons\ofxNetwork\src\ofxNetworkUtils.h" />
@@ -766,7 +766,7 @@
     <ClInclude Include="src\ResponseGui.h" />
     <ClInclude Include="src\SurveyAnswers.h" />
     <ClInclude Include="src\SurveyAppGlobals.h" />
-    <ClInclude Include="src\SurveyQuestions.h" />
+    <ClInclude Include="src\QuestionDisplay.h" />
     <ClInclude Include="src\Text.h" />
     <ClInclude Include="src\ThreadedTextureSaver.h" />
   </ItemGroup>

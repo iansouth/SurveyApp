@@ -3,8 +3,7 @@
 #include "ofMain.h"
 #include <ofxApp.h>
 #include "AnswerGui.h"
-#include "CameraCapture.h"
-#include "SurveyQuestions.h"
+#include "QuestionDisplay.h"
 #include "ResponseGui.h"
 #include <list>
 #include "ThreadedTextureSaver.h"
@@ -41,7 +40,6 @@ private:
         ofShader blurShader;
         ofTexture camera;
         ThreadedTextureSaver textureSaver;
-
         enum State {
             START, SHOW_QUESTION, SHOW_CAMERA, SHOW_RESPONSES
         };

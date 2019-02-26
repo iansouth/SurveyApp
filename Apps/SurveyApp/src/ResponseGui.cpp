@@ -1,8 +1,10 @@
 #include "ResponseGui.h"
 #include "Text.h"
+#include "DataModel.h"
 
 void ResponseGui::draw(float x, float y, float width, float height)
 {
+    auto& scores = DataModel::get().scores;
 
     int min = 0;
     int max = 0;
@@ -25,7 +27,7 @@ void ResponseGui::draw(float x, float y, float width, float height)
     ofFill();
     float zeroPoint = margin - min * maxHeight;
     int c = 0;
-    for (auto name : order) {
+    for (auto name : DataModel::get().categories) {
         auto score = scores[name];
         float top = margin + (c++)*(maxHeight + padding);
         if (score > 0)
@@ -58,12 +60,4 @@ void ResponseGui::draw(float x, float y, float width, float height)
     }
 
 
-}
-
-void ResponseGui::onUpdate(Change & change)
-{
-    for (auto entry : change) {
-        if (scores.count(entry.category) > 0)
-            scores[entry.category] += entry.change;
-    }
 }

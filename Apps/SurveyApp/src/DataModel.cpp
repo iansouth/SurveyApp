@@ -20,6 +20,12 @@ void DataModel::respond(bool yes)
         scores[change.category] += change.change;
     }
 
+    // Write out
+    for (auto cat : categories) {
+        data["Count"][cat] = scores[cat];
+    }
+
+    ofSavePrettyJson("data.json", data);
     currentQ = (currentQ + 1) % questions.size();
 }
 

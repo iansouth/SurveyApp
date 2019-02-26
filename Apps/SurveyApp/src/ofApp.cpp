@@ -28,6 +28,7 @@ void ofApp::setup() {
     responsePanel.setup();
     responseFbo.allocate(1920, 1080, GL_RGB, 4);
     blurShader.load("blur");
+    textureSaver.startThread();
 
     ofAddListener(answerPanel.onAnswer, this, &ofApp::onAnswer);
     ofAddListener(questionDisplay.onResponseChange, &responsePanel, &ResponseGui::onUpdate);
@@ -80,9 +81,9 @@ void ofApp::draw(){
 
 void ofApp::exit()
 {
-    for (auto& thread : threads) {
-        thread.waitForThread();
-    }
+    textureSaver.stopThread();
+    textureSaver.signal();
+    textureSaver.waitForThread();
 }
 
 //--------------------------------------------------------------
@@ -106,13 +107,13 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    answerPanel.mousePressed(x, y);
     if (state == SHOW_RESPONSES && stateTime() > 0.5)
     {
         questionDisplay.next();
         changeState(SHOW_QUESTION);
         answerPanel.enable();
     }
+    answerPanel.mousePressed(x, y);
 }
 
 //--------------------------------------------------------------
@@ -143,20 +144,21 @@ void ofApp::gotMessage(ofMessage msg){
 void ofApp::onAnswer(bool& yes)
 {
     camera = answerPanel.getCameraCopy();
-    threads.emplace_back(camera);
-    threads.back().startThread();
+    textureSaver.saveTexture(camera);
 
     questionDisplay.answered(yes);
     answerPanel.disable();
     changeState(SHOW_CAMERA);
 }
 
-void ofApp::ofxAppPhaseWillBegin(ofxApp::Phase)
+void ofApp::ofxAppPhaseWillBegin(ofxApp::Phase phase)
 {
+    std::cout << "Phase " << (int)phase << std::endl;
 }
 
 void ofApp::ofxAppContentIsReady(const std::string & contentID, vector<ContentObject*>)
 {
+    std::cout << "Content " << contentID << std::endl;
 }
 
 //--------------------------------------------------------------

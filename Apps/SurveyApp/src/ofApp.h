@@ -40,7 +40,7 @@ private:
         ofFbo responseFbo;
         ofShader blurShader;
         ofTexture camera;
-        std::list<ThreadedTextureSaver> threads;
+        ThreadedTextureSaver textureSaver;
 
         enum State {
             START, SHOW_QUESTION, SHOW_CAMERA, SHOW_RESPONSES

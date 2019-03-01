@@ -76,3 +76,6 @@
 [submodule "ExternalAddons/ofxAnimatable"]
 	path = ExternalAddons/ofxAnimatable
 	url = https://github.com/local-projects/ofxAnimatable.git
+[submodule "ExternalAddons/ofxImGui"]
+	path = ExternalAddons/ofxImGui
+	url = git@github.com:jvcleave/ofxImGui.git

@@ -25,14 +25,14 @@ void DataModel::respond(bool yes)
         data["Count"][cat] = scores[cat];
     }
 
-    ofSavePrettyJson("data.json", data);
+    ofSavePrettyJson("../../../data.json", data);
     currentQ = (currentQ + 1) % questions.size();
 }
 
 DataModel::DataModel()
 {
-    config = ofLoadJson("config.json");
-    data = ofLoadJson("data.json");
+    config = ofLoadJson("../../../config.json");
+    data = ofLoadJson("../../../data.json");
 
     for (auto cat : config["Categories"])
     {
@@ -41,6 +41,7 @@ DataModel::DataModel()
 
     for (auto Q : config["Questions"])
     {
+        if (Q.empty()) continue;
         std::cout << Q << std::endl;
         Question q;
         q.text = Q["question"];

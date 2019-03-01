@@ -1,0 +1,83 @@
+{
+    "Categories": [
+        "Science",
+        "Technology",
+        "Engineering",
+        "Art",
+        "Math"
+    ],
+    "Questions": [
+        {},
+        {},
+        {
+            "no": {
+                "Art": 0,
+                "Engineering": 0,
+                "Math": 0,
+                "Science": 0,
+                "Technology": -10,
+                "asda": 0
+            },
+            "question": "Technology?",
+            "yes": {
+                "Art": 0,
+                "Engineering": 0,
+                "Math": 0,
+                "Science": 0,
+                "Technology": 10,
+                "asda": 0
+            }
+        },
+        {
+            "no": {
+                "Engineering": -10
+            },
+            "question": "Engineering?",
+            "yes": {
+                "Engineering": 10
+            }
+        },
+        {
+            "no": {
+                "Art": -10,
+                "Engineering": 0,
+                "Math": 0,
+                "Science": 0,
+                "Technology": 0,
+                "asda": 0
+            },
+            "question": "Art?",
+            "yes": {
+                "Art": 10,
+                "Engineering": 0,
+                "Math": 0,
+                "Science": 0,
+                "Technology": 0,
+                "asda": 0
+            }
+        },
+        {
+            "no": {
+                "Art": 0,
+                "Biology": 0,
+                "Engineering": 0,
+                "Literature": -23,
+                "Math": 0,
+                "Science": 0,
+                "Technology": 0,
+                "asda": 0
+            },
+            "question": "Fractals",
+            "yes": {
+                "Art": 23,
+                "Biology": 19,
+                "Engineering": 23,
+                "Literature": 0,
+                "Math": 0,
+                "Science": 0,
+                "Technology": 0,
+                "asda": 0
+            }
+        }
+    ]
+}
